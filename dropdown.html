@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0%;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 30px;
+      font-family: 'Poppins', sans-serif;
+      
+    }
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding:10px 30px;
+      background-color: rgb(248, 142, 4);
+    }
+    a{
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      color: rgb(255, 255, 255);
+      
+    }
+    li{
+      list-style-type: none;
+      display: inline-block;
+      
+    }
+    #hamburger{
+      width: 35px;
+      height: 25px;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 9px;
+      position: relative;
+
+    }
+    #hamburger>span{
+      width:100%;
+      background-color: black;
+      height:100%;
+    }
+    #hamburger:hover #hamburger>span{
+      display: none;
+    }#dropdown{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(248, 142, 4);
+      padding: 20px;
+      color: white !important;
+
+
+    }
+    #dropdown>li>a:hover{
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+    }
+    #dropdown>li{
+      width: 100%;
+      display: block;
+      text-align: center;
+    
+    }
+    section{
+      transition: all .3s;
+      display: none;
+    }
+    .showmenu{
+      display: block;
+    }
+    .one,.three{
+
+      animation: dropdown .3s linear;
+    }
+    @keyframes dropdown{
+      0%{
+        transform: translateX(-250px);
+      }
+      100%{
+        transform: translateX(0px);
+      }
+    }
+    .two,.four{
+
+animation: dropdown2 .3s linear;
+}
+@keyframes dropdown2{
+0%{
+  transform: translateX(250px);
+}
+100%{
+  transform: translateX(0px);
+}
+}
+
+.five{
+
+animation: dropdown3 .3s linear;
+}
+@keyframes dropdown3{
+0%{
+  transform: translateY(250px);
+}
+100%{ 
+  transform: translateY(0px);
+}
+}
+
+input[type="checkbox"]{
+  position: absolute;
+  right:65px;
+  width: 45px;
+  height: 30px;
+  z-index: 1;
+  visibility: hidden; 
+}
+.top,.bottom,.middle{
+  transition: all 0.3s linear;
+}
+input[type='checkbox']:checked~#hamburger .top{
+  transform-origin: left;
+  transform: rotate(40deg);
+}
+input[type='checkbox']:checked~#hamburger .bottom{
+  transform-origin: left;
+  transform: rotate(-40deg);
+}
+input[type='checkbox']:checked~#hamburger .middle{
+ 
+  transform:translateX(-1000px);
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Color Flipper</h2>
+    <input type="checkbox" id="input">
+    <div id="hamburger">
+      <span class="top"></span>
+      <span class="middle"></span>
+      <span class="bottom"></span>
+    </div>
+    
+
+  </header>
+  <section>
+    <ol id="dropdown">
+      <li class="one"><a href="">Home</a></li>
+      <li class="two"><a href="">Projects</a></li>
+      <li class="three"><a href="">Contact</a></li>
+      <li class="four"><a href="">Destination</a></li>
+      <li class="five"><a href="">About</a></li>
+    </ol>
+  </section>
+  <script>
+    const btn = document.getElementById('hamburger');
+    const bar = document.querySelector('section');
+    let input = document.getElementById('input');
+
+    btn.addEventListener('click',show);
+    function show(){
+      bar.classList.toggle('showmenu');
+      input.checked = !input.checked;
+
+    }
+  </script>
+</body>
+
+</html>
